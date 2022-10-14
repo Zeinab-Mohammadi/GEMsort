@@ -19,9 +19,11 @@ Two signal processing modifications to our previously developed single-channel r
 
 ## Installation
 
-For easy installation, download the code using the link above or type the following into a terminal window:
+To download and install the code, you ca download it using the link above or open a terminal window and type below command:
 
+```
 git clone https://github.com/Zeinab-Mohammadi/GEMsort.git
+```
 
 For convenience, we recommend setting up a virtual environment before running the code, to avoid any unpleasant version control issues or interactions with other projects you're working on. See the env.yml file for configuration details. Note the package requires python 3.7 to run.
  
