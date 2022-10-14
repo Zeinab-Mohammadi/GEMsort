@@ -29,4 +29,11 @@ git clone https://github.com/Zeinab-Mohammadi/GEMsort.git
 
 It would be useful to make a new virtual environment and then run the code. This will prevent any possible issue with other projects or version control problems.
 
- 
+
+## Code author
+
+Zeinab Mohammadi
+
+Please cite as:
+
+Mohammadi, Z., Denman, D., Klug, A., & Lei, T. C. (2022). Multichannel neural spike sorting with spike reduction and positional feature. bioRxiv. 
