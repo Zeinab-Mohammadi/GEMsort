@@ -13,8 +13,6 @@ Two signal processing modifications were added to our single-channel real-time s
 - Sorting_Neuropixels_data: Using GEMsort to extract, filter, and sort spikes of the real data
 - Sorting_synthetic_data: Spike sorting of a multichannel synthetic data
 - Making_synthetic_data: Producing synthetic data with different firing rates and spikes shapes
-- ...
-- ...
 
 
 ## Installation
