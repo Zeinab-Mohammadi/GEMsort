@@ -13,14 +13,11 @@ import time
 
 def GEMsort(Nodesnum, GEMsort_dataset):
     
-   #########  GEMsort algorithm  ###################
-    start_time=time.time()
-    #k=np.zeros((2,2))#np.array([np.mean(GEMsort_dataset,axis=0),np.mean(GEMsort_dataset,axis=0)])
-    k=np.zeros((2,2))
-#     b=np.mean(GEMsort_dataset,0)
-#     k[0,:]=b
-#     k[1,:]=b
-    center=k
+   #########  GEMsort algorithm  #########
+    start_time = time.time()
+    #k = np.zeros((2, 2))#np.array([np.mean(GEMsort_dataset,axis=0),np.mean(GEMsort_dataset,axis=0)])
+    k = np.zeros((2, 2))
+    center = k
     GEMsortNumnodes = Nodesnum
     GEMsort_dim = 2  
 
@@ -32,11 +29,9 @@ def GEMsort(Nodesnum, GEMsort_dataset):
     GEMsort_met = 2.
     GEMsort_thr_edge = 5 # Edge threshold for removing inappropriate edges
 
-    # Initialise connection set C - links+
-    init = np.zeros((center.shape[0], 1))  # consider that center and everything should be array to use shape
-    # also consider that init is a vector since second dimension is 1 as above
+    init = np.zeros((center.shape[0], 1)) 
 
-    GEMsort_C = -1. + np.diag(init[:, 0])  # 
+    GEMsort_C = -1. + np.diag(init[:, 0])  
     # GEMsort_C is the connection set in which -1 corresponds to no connection
 
     GEMsort_E = np.zeros((1, center.shape[0])) # Local accumulated error 
@@ -60,7 +55,6 @@ def GEMsort(Nodesnum, GEMsort_dataset):
             currentdata = copy.copy(GEMsort_dataset)  
             if flag == 1:
                 while (np.array(currentdata).shape[0] - 1) != 0:
-                    # 1: Select input sample
                     index = math.ceil(np.array(currentdata).shape[
                                           0] * random.random())  
                     vect =copy.copy(currentdata[np.int(index - 1.), 0:GEMsort_dim])
@@ -76,14 +70,11 @@ def GEMsort(Nodesnum, GEMsort_dataset):
                     dinit[S1] = 9999.
                     secminval, S2 = np.array(dinit).min(), np.array(dinit).argmin()
 
-                    #Adjusting connection relationship between S1 and S2
                     GEMsort_C[S1, S2] = 0.
                     GEMsort_C[S2, S1] = 0.
 
                     # S1 Local Error 
                     GEMsort_E[0, S1] += minval  
-
-                 
                     GEMsort_w[S1, :] += GEMsort_eb * (vect - GEMsort_w[S1, :])  # change winner node S1
                     for i in range(GEMsort_C.shape[0]):  
                         if GEMsort_C[S1, i] != -1.0:
@@ -100,7 +91,6 @@ def GEMsort(Nodesnum, GEMsort_dataset):
                         for i in range(GEMsort_C.shape[0]):
                             for j in range(GEMsort_C.shape[1]):
                                  if (GEMsort_C[i, j]) > GEMsort_thr_edge:
-               
                                       GEMsort_C[i, j] = -1.
                                       GEMsort_C[j, i] = -1.
 
@@ -131,7 +121,6 @@ def GEMsort(Nodesnum, GEMsort_dataset):
                         
         # Adding new node
         if GEMsort_w.shape[0] < GEMsortNumnodes:
-            # Determine the unit q with maximum counter and unit p with second counter
             init2 = copy.copy(GEMsort_E)
             maxval, q = init2.max(), init2.argmax()
             init2[0, q] = -99999999.0
@@ -185,7 +174,6 @@ def GEMsort(Nodesnum, GEMsort_dataset):
         if GEMsort_w.shape[0] == GEMsortNumnodes:
             finishsign = 0
 
-
         notinitialsign = 1
 
 
@@ -203,44 +191,37 @@ def GEMsort(Nodesnum, GEMsort_dataset):
     # for i in range(GEMsort_C.shape[0]):
     #     for j in range (GEMsort_C.shape[0]):
     #        if GEMsort_C[i,j] > np.mean(GEMsort_NewC):
-    #           GEMsort_C[i, j]=-1
+    #           GEMsort_C[i, j] = -1
     #
 
-    dis_mean=np.zeros((GEMsort_C.shape[0],GEMsort_C.shape[0]))
-    dis=np.zeros((1,GEMsort_dataset.shape[0]))
+    dis_mean = np.zeros((GEMsort_C.shape[0],GEMsort_C.shape[0]))
+    dis = np.zeros((1,GEMsort_dataset.shape[0]))
 
     for i in range(GEMsort_C.shape[0]):
         for j in range(GEMsort_C.shape[0]):
              if GEMsort_C[i, j] != -1.:
                  for k in range(GEMsort_dataset.shape[0]):
-                     #A=(GEMsort_w[i,1]-GEMsort_w[j,1])/(GEMsort_w[j,0]-GEMsort_w[i,0])
-                     #B=1.
-                     #C=(-A*GEMsort_w[i,0])-GEMsort_w[i,1]
-                     #dis[0,k]=np.abs(A*GEMsort_dataset[k,0]+B*GEMsort_dataset[k,1]+C)/(np.sqrt((A*A)+(B*B)))
                      midx = (GEMsort_w[j, 0] + GEMsort_w[i, 0]) / 2.
                      midy = (GEMsort_w[j, 1] + GEMsort_w[i, 1]) / 2.
-                     dis[0, k] = np.sqrt(((midx - GEMsort_dataset[k, 0]) * (midx - GEMsort_dataset[k, 0])) + (
-                     (midy - GEMsort_dataset[k, 1]) * (midy - GEMsort_dataset[k, 1])))
+                     dis[0, k] = np.sqrt(((midx - GEMsort_dataset[k, 0]) * (midx - GEMsort_dataset[k, 0])) + ((midy - GEMsort_dataset[k, 1]) * (midy - GEMsort_dataset[k, 1])))
                  num_dis = np.sort(dis)[:5]
-               
-                 dis_mean[i,j]=np.mean(num_dis)
+                 dis_mean[i,j] = np.mean(num_dis)
 
     
-    dis_mean=np.array(dis_mean)
-    tt=(dis_mean[dis_mean!=0].shape)
-    sum_total=np.sum(dis_mean[dis_mean!=0])
-    mean_total=sum_total/tt
+    dis_mean = np.array(dis_mean)
+    tt = (dis_mean[dis_mean != 0].shape)
+    sum_total = np.sum(dis_mean[dis_mean != 0])
+    mean_total = sum_total/tt
 
 
     for i in range(dis_mean.shape[0]):
         for j in range(dis_mean.shape[1]):
             if dis_mean[i, j] != 0:
-                if dis_mean[i,j]> (1.2*mean_total):
+                if dis_mean[i,j] > (1.2 * mean_total):
                     GEMsort_C[i, j] = -1
                     GEMsort_C[j, i] = -1
 
     #determinig number of groups
-    #from numpy import *
 
     all_nodes=[]
     set1 = []
@@ -279,42 +260,41 @@ def GEMsort(Nodesnum, GEMsort_dataset):
         all_nodes.append(nodes)
    
     #identifying final groups
-    nodes_total=[]
+    nodes_total = []
 
     if nodes.shape[0]!=0:
         for k in range(Nodesnum):
-            a=[]
+            a = []
             for j in range(Nodesnum):
-                if np.array(all_nodes)[j][-1]==k:
-                    a=np.array(all_nodes)[j]
-            if a!=[]:
+                if np.array(all_nodes)[j][-1] == k:
+                    a = np.array(all_nodes)[j]
+            if a != []:
                 nodess=a
                 nodes_total.append(a)
         nodes_total 
 
-    ################ below lines are for having positions of nodes as Nodes to calculate for onlinepca in next cells
-        Nodes=[]
+        Nodes = []
         for i in range(GEMsort_C.shape[0]):
-            if i< Nodesnum:
-                for j in range (i,GEMsort_C.shape[0]):
+            if i < Nodesnum:
+                for j in range (i, GEMsort_C.shape[0]):
                     if GEMsort_C[i,j] != -1:
-                        x=[GEMsort_w[i,0],GEMsort_w[j,0]]
-                        y=[GEMsort_w[i, 1], GEMsort_w[j, 1]]
+                        x = [GEMsort_w[i,0],GEMsort_w[j,0]]
+                        y = [GEMsort_w[i, 1], GEMsort_w[j, 1]]
                         Nodes.append(GEMsort_w[i,:])
                         Nodes.append(GEMsort_w[j,:])
-        Nodes=np.unique(np.array(Nodes), axis=0)
+        Nodes = np.unique(np.array(Nodes), axis=0)
         
-    if nodes.shape[0]==0:
-        Nodes=[]  
-        nodess=[]
+    if nodes.shape[0] == 0:
+        Nodes = []  
+        nodess = []
         
 #     plt.plot(GEMsort_dataset[:,0],GEMsort_dataset[:,1], 'o', zorder=1)
 #     for i in range(GEMsort_C.shape[0]):
 #         for j in range (GEMsort_C.shape[0]):
 #             if GEMsort_C[i,j] != -1:
 #                # print i,j
-#                 x=[GEMsort_w[i,0],GEMsort_w[j,0]]
-#                 y=[GEMsort_w[i, 1], GEMsort_w[j, 1]]
+#                 x = [GEMsort_w[i,0], GEMsort_w[j,0]]
+#                 y = [GEMsort_w[i, 1], GEMsort_w[j, 1]]
 #                 plt.plot(x, y, 'k', zorder=1, lw=1)  # 'b' color of lines, lw:width of lines
 #                 plt.scatter(x, y, s=120, c='darkorange', zorder=2)
 #     plt.show()
