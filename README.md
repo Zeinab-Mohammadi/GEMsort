@@ -27,7 +27,7 @@ git clone https://github.com/Zeinab-Mohammadi/GEMsort.git
 
 ## Code author
 
-Zeinab Mohammadi
+Zeinab Mohammadi (PostDoc at Princeton University)
 
 Please cite as:
 
