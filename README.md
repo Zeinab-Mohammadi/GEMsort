@@ -31,4 +31,4 @@ Zeinab Mohammadi
 
 Please cite as:
 
-Mohammadi, Zeinab, Daniel Denman, Achim Klug, and Tim C. Lei. "Multichannel neural spike sorting with spike reduction and positional feature." bioRxiv (2022). 
+Zeinab Mohammadi, Daniel Denman, Achim Klug, and Tim C. Lei. "Multichannel neural spike sorting with spike reduction and positional feature." bioRxiv (2022). 
