@@ -1,6 +1,6 @@
 # GEMsort
 
-This package provides flexible and easy-to-use code for Graph nEtwork Multichannel (GEMsort), a spike sorting approach for sorting hundred of spikes in real-time. The GEMsort code includes options for sorting a Neuropixels dataset and synthetic multichannel data. The code to produce the synthetic data is included as well. 
+This package provides flexible and efficient code for Graph nEtwork Multichannel (GEMsort), a spike sorting approach for sorting hundred of spikes in real-time. The GEMsort code includes options for sorting a Neuropixels dataset and synthetic multichannel data. The code to produce the synthetic data is included as well. 
 
 GEMsort can rapidly sort neural spikes without requiring significant computer processing power and system memory storage. The parallel processing architecture of GEMsort is particularly suitable for digital hardware implementation to improve processing speed and recording channel scalability. Multichannel synthetic spikes and actual recordings with Neuropixels probes were used to evaluate the sorting accuracies of the GEMsort algorithm.
 
