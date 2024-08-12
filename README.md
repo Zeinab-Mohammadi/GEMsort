@@ -31,4 +31,4 @@ Zeinab Mohammadi (PostDoc at Princeton University)
 
 Please cite as:
 
-Zeinab Mohammadi, Daniel Denman, Achim Klug, and Tim C. Lei. "Multichannel neural spike sorting with spike reduction and positional feature." bioRxiv (2022). 
+Mohammadi, Zeinab, et al. "A fully automatic multichannel neural spike sorting algorithm with spike reduction and positional feature." Journal of Neural Engineering (2024). 
