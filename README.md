@@ -27,8 +27,10 @@ git clone https://github.com/Zeinab-Mohammadi/GEMsort.git
 
 ## Code author
 
-Zeinab Mohammadi (PostDoc at Princeton University)
+Zeinab Mohammadi 
 
 Please cite as:
 
-Mohammadi, Zeinab, et al. "A fully automatic multichannel neural spike sorting algorithm with spike reduction and positional feature." Journal of Neural Engineering (2024). 
+Mohammadi, Z., Denman, D. J., Klug, A., & Lei, T. C. “Multichannel neural spike sorting with spike reduction and positional feature.” Journal of Neural Engineering, 2024.
+Mohammadi, Z., Kincaid, J. M., Pun, S. H., Klug, A., Liu, C., & Lei, T. C. “Computationally inexpensive enhanced growing neural gas algorithm for real-time adaptive neural spike clustering.” Journal of Neural Engineering, 2019.
+Lei, T. C., Mohammadi, Z., Klug, A., & Liu, C. “Process and hardware implementation of adaptive real-time neural spike sorting.” U.S. Patent No. US 11,622,727 B2, 2023.
